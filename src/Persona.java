@@ -14,7 +14,7 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    // Getters y setters
+
     public String getIdPersona() {
         return idPersona;
     }

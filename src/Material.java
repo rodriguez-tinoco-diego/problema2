@@ -8,7 +8,7 @@ public abstract class Material {
     private int numPaginas;
     private EstadoMaterial estado;
 
-    // Constructor
+
     protected Material(String codigo, String titulo, String autor,
                        int anioPublicacion, int numPaginas) {
         this.codigo = codigo;
@@ -19,7 +19,7 @@ public abstract class Material {
         this.estado = EstadoMaterial.DISPONIBLE;
     }
 
-    // Getters y setters
+
     public String getCodigo() { return codigo; }
     public String getTitulo() { return titulo; }
     public String getAutor() { return autor; }
@@ -28,7 +28,7 @@ public abstract class Material {
     public EstadoMaterial getEstado() { return estado; }
     protected void setEstado(EstadoMaterial estado) { this.estado = estado; }
 
-    // Métodos de negocio
+
     public boolean prestar() {
         if (estado == EstadoMaterial.DISPONIBLE) {
             estado = EstadoMaterial.PRESTADO;

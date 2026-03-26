@@ -12,7 +12,7 @@ public class Biblioteca {
         this.prestamos = new ArrayList<>();
     }
 
-    // Registro
+
     public void registrarPersona(Persona persona) {
         if (persona == null) throw new IllegalArgumentException("Persona no puede ser nula");
         personas.add(persona);
@@ -23,23 +23,23 @@ public class Biblioteca {
         catalogo.add(material);
     }
 
-    // Préstamo
+
     public boolean prestarMaterial(String idPersona, String codigoMaterial, LocalDate fecha) {
-        // Buscar persona
+
         Persona persona = buscarPersona(idPersona);
         if (persona == null) {
             System.out.println("Persona no encontrada.");
             return false;
         }
 
-        // Buscar material
+
         Material material = buscarMaterial(codigoMaterial);
         if (material == null) {
             System.out.println("Material no encontrado.");
             return false;
         }
 
-        // Verificar disponibilidad
+
         if (!material.estaDisponible()) {
             System.out.println("El material no está disponible.");
             return false;
@@ -54,7 +54,7 @@ public class Biblioteca {
             return false;
         }
 
-        // Realizar préstamo
+
         material.prestar(); // cambia estado a PRESTADO
         Prestamo prestamo = new Prestamo(persona, material, fecha);
         prestamos.add(prestamo);
@@ -62,9 +62,9 @@ public class Biblioteca {
         return true;
     }
 
-    // Devolución
+
     public boolean devolverMaterial(String idPersona, String codigoMaterial, LocalDate fecha) {
-        // Buscar préstamo activo que coincida con persona y material
+
         Prestamo prestamo = prestamos.stream()
                 .filter(p -> p.getPersona().getIdPersona().equals(idPersona) &&
                         p.getMaterial().getCodigo().equals(codigoMaterial) &&
@@ -82,14 +82,14 @@ public class Biblioteca {
         return true;
     }
 
-    // Consulta de préstamos activos de una persona
+
     public List<Prestamo> consultarPrestamosActivos(String idPersona) {
         return prestamos.stream()
                 .filter(p -> p.getPersona().getIdPersona().equals(idPersona) && p.estaActivo())
                 .toList();
     }
 
-    // Mostrar todos los préstamos (histórico)
+
     public void mostrarPrestamosCompletos() {
         if (prestamos.isEmpty()) {
             System.out.println("No hay préstamos registrados.");
@@ -100,7 +100,7 @@ public class Biblioteca {
         }
     }
 
-    // Métodos auxiliares privados
+
     private Persona buscarPersona(String idPersona) {
         return personas.stream()
                 .filter(p -> p.getIdPersona().equals(idPersona))

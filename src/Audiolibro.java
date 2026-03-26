@@ -1,4 +1,5 @@
 public class Audiolibro extends Material {
+
     private int duracionMinutos;
     private String narrador;
     private String formato; // MP3, WAV, etc.

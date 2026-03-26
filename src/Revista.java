@@ -1,4 +1,5 @@
 public class Revista extends Material {
+
     private int numeroEdicion;
     private String mesPublicacion;
 
